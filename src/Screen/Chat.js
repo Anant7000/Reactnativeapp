@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, Dimensions, ImageBackground } from 'react-native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Bubble, Composer, GiftedChat, InputToolbar, Send } from 'react-native-gifted-chat'
 import { useRoute } from '@react-navigation/native'
@@ -111,7 +111,7 @@ const Chat = ({ navigation }) => {
         </View>
 
       </View>
-
+     <ImageBackground style={{flex:1}} source={require('../../assets/chatbackground.png')}>
       <GiftedChat
         messages={messages}
         onSend={messages => onSend(messages)}
@@ -125,7 +125,7 @@ const Chat = ({ navigation }) => {
             return (
               <Send {...props}>
                 <View {...props} style={styles.Sendbutton}>
-                  <Image style={{ width: 30, height: 30, left: 4 }} source={require('../../assets/send.png')}></Image>
+                  <Image style={{ width: 30, height: 30, left: 4,}} source={require('../../assets/send.png')}></Image>
                 </View>
               </Send>
             )
@@ -160,9 +160,11 @@ const Chat = ({ navigation }) => {
 
           )
         }}
-        messagesContainerStyle={{ paddingBottom: 20, }}
+        messagesContainerStyle={{ paddingBottom: 20,right:20,width:Ww+45,left:-42}}
       />
+      </ImageBackground>
     </View>
+    
   )
 }
 
@@ -175,7 +177,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: '#273236',
     paddingHorizontal: 10,
-    height: 60
+    height: 60,
+    
   },
   InputToolbar: {
     backgroundColor: '#1f2c34',
